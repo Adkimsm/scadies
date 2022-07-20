@@ -1,5 +1,6 @@
-const { MongoClient } = require('mongodb')
-const mongodb = async (config) => {
+import { MongoClient } from 'mongodb'
+
+export default async function (config) {
     const endpoint = String(config.endpoint)
 
     const client = await MongoClient.connect(endpoint, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -45,5 +46,3 @@ const mongodb = async (config) => {
         }
     }
 }
-
-module.exports = mongodb
