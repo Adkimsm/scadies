@@ -1,7 +1,7 @@
 import configs from '../../core.config.js'
 
 let config = {
-    get(key) {
+    get(key: string) {
         return Reflect.get(configs, key)
     },
 }

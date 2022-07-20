@@ -2,7 +2,7 @@
   "name": "scadies-core",
   "version": "0.0.1",
   "description": "A Blog System Write in Node.js with Express.",
-  "main": "./src/main.js",
+  "main": "./src/main.ts",
   "author": "Kysolva",
   "license": "MIT",
   "private": false,
@@ -12,22 +12,16 @@
     "mongodb": "^4.8.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.6",
     "nodemon": "^2.0.19",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
   },
   "scripts": {
-    "start": "nodemon",
+    "start": "nodemon -e ts -w ./src -w ./libs -x \"yarn ts:node\"",
+    "ts:node": "node --loader ts-node/esm ./src/main.ts",
     "beauty": "prettier ./src/**/*.js --config ./.prettierrc --write "
-  },
-  "nodemonConfig": {
-    "ignore": [
-      ".git",
-      "node_modules",
-      "dist"
-    ],
-    "watch": [
-      "./src",
-      "./libs"
-    ]
   }
 }

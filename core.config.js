@@ -1,3 +1,5 @@
+// @ts-ignore
+
 export default {
     db: 'mongodb',
     port: 3000,
