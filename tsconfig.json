@@ -11,8 +11,8 @@
         "strictFunctionTypes": true,
         "allowSyntheticDefaultImports": true
     },
-    "include": [
-        "src",
-        "libs"
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
     ]
 }
