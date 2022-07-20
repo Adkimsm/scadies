@@ -22,6 +22,6 @@
   "scripts": {
     "start": "nodemon -e ts -w ./src -w ./libs -x \"yarn ts:node\"",
     "ts:node": "node --loader ts-node/esm ./src/main.ts",
-    "beauty": "prettier ./src/**/*.js --config ./.prettierrc --write "
+    "beauty": "prettier ./src/**/*.ts --config ./.prettierrc --write "
   }
 }
