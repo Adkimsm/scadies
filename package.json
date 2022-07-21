@@ -5,7 +5,6 @@
   "main": "./src/main.ts",
   "author": "Kysolva",
   "license": "MIT",
-  "type": "module",
   "private": false,
   "dependencies": {
     "express": "^4.18.1",

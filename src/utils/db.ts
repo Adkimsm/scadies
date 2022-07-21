@@ -1,5 +1,5 @@
-import config from './config.js'
+import config from './config'
 
 let dbName = config.get('db') 
 
-export default import(`../../libs/db/${dbName}.js`)
+export default import(`../../libs/db/${dbName}`)

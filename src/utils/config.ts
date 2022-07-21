@@ -1,4 +1,4 @@
-import configs from '../../core.config.js' 
+import configs from '../../core.config' 
 
 export default {
     get(key: string) {

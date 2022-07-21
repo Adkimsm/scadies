@@ -1,7 +1,7 @@
 import express from 'express'
-import home from './routes/home.js'
-import config from './utils/config.js'
-import siteInfos from './routes/siteInfos.js'
+import home from './routes/home'
+import config from './utils/config'
+import siteInfos from './routes/siteInfos'
 
 const port = config.get('port')
 
