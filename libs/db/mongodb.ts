@@ -12,7 +12,7 @@ export default async function (config: { endpoint: string }) {
                 const data = await db.collection(namespace).findOne({ key: key })
                 return data ? data.value : null
             },
-            write: async (key: string, value: unknown) => {
+            write: async <T>(key: string, value: T) => {
                 await db.collection(namespace).updateOne({ key: key }, { $set: { value: value } }, { upsert: true })
                 return true
             },
@@ -25,10 +25,10 @@ export default async function (config: { endpoint: string }) {
                 await db.collection(namespace).insertMany([data])
                 return true
             },
-            list: async () => {
+            list: async <T>() => {
                 const res = await db.collection(namespace).find().toArray()
                 let data: {
-                    [key: string]: unknown
+                    [key: string]: T
                 } = {}
                 for (let i in res) {
                     data[res[i].key] = res[i].value
