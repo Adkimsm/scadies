@@ -27,10 +27,10 @@ export default async function (config: { endpoint: string }) {
             },
             list: async <T>() => {
                 const res = await db.collection(namespace).find().toArray()
-                let data: {
+                const data: {
                     [key: string]: T
                 } = {}
-                for (let i in res) {
+                for (const i in res) {
                     data[res[i].key] = res[i].value
                 }
                 return data
