@@ -1,6 +1,5 @@
 import config from './config.js'
 
-let dbName = config.get('db'),
-    db = await import(`../../libs/db/${dbName}.js`)
+let dbName = config.get('db') 
 
-export default await db
+export default import(`../../libs/db/${dbName}.js`)

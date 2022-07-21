@@ -1,9 +1,7 @@
-import configs from '../../core.config.js'
+import configs from '../../core.config.js' 
 
-let config = {
+export default {
     get(key: string) {
         return Reflect.get(configs, key)
-    },
+    }
 }
-
-export default config
