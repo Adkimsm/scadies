@@ -1,17 +1,16 @@
 {
     "compilerOptions": {
         "outDir": "dist",
-        "module": "ESNext",
+        "module": "CommonJS",
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "target": "ESNext",
+        "target": "ES5",
         "allowJs": true,
         "strict": true,
         "strictNullChecks": true,
         "strictFunctionTypes": true,
         "allowSyntheticDefaultImports": true,
         "declaration": true,
-        "emitDeclarationOnly": true,
         "isolatedModules": true
     },
     "exclude": [
