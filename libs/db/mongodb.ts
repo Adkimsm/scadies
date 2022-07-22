@@ -1,10 +1,10 @@
 import { MongoClient } from 'mongodb'
 
-export default async function (config: { endpoint: string }) {
+export default async function (config: { endpoint: string, dbName: string }) {
     const endpoint = String(config.endpoint)
 
     const client = await MongoClient.connect(endpoint);
-    const db = await client.db('Scadies');
+    const db = await client.db(config.dbName)
 
     return async (namespace: string) => {
         return {
