@@ -6,6 +6,7 @@ import login from './routes/login'
 import posts from './routes/posts'
 import post from './routes/post'
 import log from './utils/log'
+import verifyUuid from './routes/verifyUuid'
 
 const port = config.get('port')
 
@@ -23,6 +24,8 @@ app.get('/api/posts', posts)
 app.get('/api/posts/:id', post)
 
 app.post('/api/session/login', login)
+
+app.get('/api/session/verifyuuid/:id', verifyUuid)
 
 app.listen(port, () => {
     log.info(`Application started on port ${port}!`)
