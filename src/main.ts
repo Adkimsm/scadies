@@ -1,5 +1,4 @@
 import express from 'express'
-import bodyParser from 'body-parser'
 import home from './routes/home'
 import config from './utils/config'
 import siteInfos from './routes/siteInfos'
@@ -12,8 +11,8 @@ const port = config.get('port')
 
 const app = express()
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     log.info(`got a request to "/"`)

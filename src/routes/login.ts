@@ -14,20 +14,24 @@ export default async function (req: Request, res: Response) {
         }),
         users = await dbObj('users'),
         data = await users.list(),
-        reqUsrName = encrypt(req.body.usr),
-        reqUsrPwd = encrypt(req.body.pwd)
+        reqUsrName = req.body.usr,
+        reqUsrPwd = encrypt(String(req.body.pwd))
 
     await users.close()
 
-    for (const user of data) {
-        if (typeof user.value === 'object') {
-            if (user.value.name === reqUsrName) {
-                if (user.value.pwd === reqUsrPwd)
-                    return res.json({ ok: true, ...user.value.info })
+    console.log(req.body)
+
+    console.log(data)
+
+    for (const userNum in data) {
+        const user = data[userNum]
+        console.log(user)
+        if (user) {
+            if (user.name == reqUsrName) {
+                if (user.pwd == reqUsrPwd)
+                    return res.json({ ok: true, ...user.info })
                 else return res.json({ ok: false, pwd: false })
             } else return res.json({ ok: false, name: false })
         } else continue
     }
-
-    return res.json({ ok: false, name: false, pwd: false })
 }
