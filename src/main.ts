@@ -14,30 +14,15 @@ const app = express()
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    log.info(`got a request to "/"`)
-    home(req, res)
-})
+app.get('/', home)
 
-app.get('/api/siteinfos', (req, res) => {
-    log.info(`got a request to "/api/siteinfos"`)
-    siteInfos(req, res)
-})
+app.get('/api/siteinfos', siteInfos)
 
-app.get('/api/posts', (req, res) => {
-    log.info(`got a request to "/api/posts"`)
-    posts(req, res)
-})
+app.get('/api/posts', posts)
 
-app.get('/api/posts/:id', (req, res) => {
-    log.info(`got a request to "/api/posts/${req.params.id}"`)
-    post(req, res)
-})
+app.get('/api/posts/:id', post)
 
-app.post('/api/session/login', (req, res) => {
-    log.info(`got a request to "/api/sessions/login"`)
-    login(req, res)
-})
+app.post('/api/session/login', login)
 
 app.listen(port, () => {
     log.info(`Application started on port ${port}!`)
