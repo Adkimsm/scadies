@@ -5,6 +5,7 @@ import config from './utils/config'
 import siteInfos from './routes/siteInfos'
 import login from './routes/login'
 import posts from './routes/posts'
+import post from './routes/post'
 import log from './utils/log'
 
 const port = config.get('port')
@@ -27,6 +28,11 @@ app.get('/api/siteinfos', (req, res) => {
 app.get('/api/posts', (req, res) => {
     log.info(`got a request to "/api/posts"`)
     posts(req, res)
+})
+
+app.get('/api/posts/:id', (req, res) => {
+    log.info(`got a request to "/api/posts/${req.params.id}"`)
+    post(req, res)
 })
 
 app.post('/api/session/login', (req, res) => {

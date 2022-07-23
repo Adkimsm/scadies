@@ -8,15 +8,15 @@ export default async function (config: { endpoint: string, dbName: string }) {
 
     return async (namespace: string) => {
         return {
-            read: async (key: string) => {
+            read: async <T>(key: T) => {
                 const data = await db.collection(namespace).findOne({ key: key })
                 return data ? data.value : null
             },
-            write: async <T>(key: string, value: T) => {
+            write: async <T, U>(key: U, value: T) => {
                 await db.collection(namespace).updateOne({ key: key }, { $set: { value: value } }, { upsert: true })
                 return true
             },
-            delete: async (key: string) => {
+            delete: async <T>(key: T) => {
                 await db.collection(namespace).deleteOne({ key: key })
                 return true
             },
