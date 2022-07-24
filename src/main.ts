@@ -6,6 +6,7 @@ import siteInfos from './routes/siteInfos'
 import login from './routes/login'
 import posts from './routes/posts'
 import post from './routes/post'
+import reg from './routes/reg'
 import log from './utils/log'
 import verifyUuid from './routes/verifyUuid'
 
@@ -26,6 +27,8 @@ app.get('/api/posts', posts)
 app.get('/api/posts/:id', post)
 
 app.post('/api/session/login', login)
+
+app.post('/api/session/reg', reg)
 
 app.get('/api/session/verifyuuid/:id', verifyUuid)
 
