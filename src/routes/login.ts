@@ -4,6 +4,7 @@ import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import log from '../utils/log'
 import { encrypt } from '../utils/crypto'
+import {v4} from 'uuid'
 
 const SECRET_KEY = config.get('cryptoSecret')
 
@@ -33,7 +34,6 @@ export default async function (req: Request, res: Response) {
             if (user.name == reqUsrName) {
                 if (user.pwd == reqUsrPwd) {
                     const token =
-                        'Bearer ' +
                         jwt.sign(
                             {
                                 _id: user.info.id,
