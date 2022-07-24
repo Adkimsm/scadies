@@ -29,9 +29,9 @@ export default async function (req: Request, res: Response) {
         if (user) {
             if (user.name == reqUsrName) {
                 if (user.pwd == reqUsrPwd)
-                    return res.json({ ok: true, ...user.info })
-                else return res.json({ ok: false, pwd: false })
-            } else return res.json({ ok: false, name: false })
+                    return res.json({ y: true, ...user.info })
+                else return res.json({ y: false, pwd: false })
+            } else return res.json({ y: false, name: false })
         } else continue
     }
 }

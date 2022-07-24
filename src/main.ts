@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import home from './routes/home'
 import config from './utils/config'
 import siteInfos from './routes/siteInfos'
@@ -14,6 +15,7 @@ const app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get('/', home)
 
