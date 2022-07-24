@@ -24,8 +24,8 @@ export default async function (req: Request, res: Response) {
         console.log(user)
         if (user) {
             if (user.info.id == reqUsrId) {
-                    return res.json({ ok: true, ...user.info })
-            } else return res.json({ ok: false })
+                    return res.json({ y: true, ...user.info })
+            } else return res.json({ y: false })
         } else continue
     }
 }
