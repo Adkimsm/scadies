@@ -1,3 +1,6 @@
+import fs from 'fs'
+import path from 'path'
+
 export default {
     db: 'mongodb',
     port: 3000,
@@ -5,5 +8,5 @@ export default {
     dbName: 'Scadies',
     algorithm: 'aes192',
     cryptoEncoding: 'hex',
-    cryptoSecret: "dsadafsadsgfdscafsz cdfas "
+    cryptoSecret: fs.readFileSync(path.resolve(__dirname, './public/jwt/jwt.pem'))
 }
