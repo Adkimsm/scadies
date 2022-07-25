@@ -2,8 +2,8 @@
 
 ## EcosSystem
 
-目前，我们的核心仓库托管在 [GitHub](https://github.com/kysolva/scadies-core) (Alpha)
+目前，我们的核心仓库托管在 [GitHub](https://github.com/Kysolva/scadies/tree/main/packages/core) (Alpha)
 
-官方的后台仓库同样托管在 [GitHub](https://github.com/kysolva/scadies-admin) (Alpha)
+官方的后台仓库同样托管在 [GitHub](https://github.com/Kysolva/scadies/tree/main/packages/admin) (Alpha)
 
 目前没有前端仓库。
