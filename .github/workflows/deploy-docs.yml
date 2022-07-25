@@ -8,13 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
+
+    steps:yy
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: yarn
       - run: yarn install --frozen-lockfile
+
+      - name: install
+        run: yarn
 
       - name: Build
         run: yarn build:docs
