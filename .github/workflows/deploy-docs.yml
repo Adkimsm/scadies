@@ -16,11 +16,8 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile
 
-      - name: Inter to Docs Dictionary
-        run: cd ./packages/docs
-
       - name: Build
-        run: yarn build
+        run: yarn build:docs
         
       - name: Add CNAME
         run: echo 'scadies.js.org' > .vitepress/dist/CNAME
