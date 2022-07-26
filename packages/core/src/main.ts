@@ -10,6 +10,7 @@ import post from './routes/post'
 import reg from './routes/reg'
 import verifyToken from './routes/verifyToken'
 import log from './utils/log'
+import version from './routes/version'
 
 const port = config.get('port')
 
@@ -32,6 +33,8 @@ app.post('/api/session/login', login)
 app.get('/api/session/verifytoken/:token', verifyToken)
 
 app.post('/api/session/reg', reg)
+
+app.get('/api/ver', version)
 
 app.listen(port, () => {
     log.info(`Application started on port ${port}!`)
