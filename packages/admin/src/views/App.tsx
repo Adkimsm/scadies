@@ -25,17 +25,6 @@ function App() {
         .then(res => res.json())
         .then(res => (postNum = Object.keys(res).length))
 
-    let lastLoggedIp = '192.168.255.255'
-
-    let lastLoggedTime = '0000-00-00 00:00'
-
-    fetch(`${import.meta.env.VITE_CORE_URI}/api/logged`)
-        .then(res => res.json())
-        .then(res => {
-            lastLoggedIp = res[0].ip
-            lastLoggedTime = res[0].time
-        })
-
     let coreVersion = '0.0.1'
 
     fetch(`${import.meta.env.VITE_CORE_URI}/api/ver`)
@@ -86,13 +75,6 @@ function App() {
                             概览
                         </Text>
                         <Text p>共有 {postNum} 篇文章。</Text>
-                    </Card>
-                    <Card shadow>
-                        <Text h2 b>
-                            最近登录
-                        </Text>
-                        <Text p>上次登录 IP： {lastLoggedIp}</Text>
-                        <Text p>上次登录时间： {lastLoggedTime}</Text>
                     </Card>
                     <Card shadow>
                         <Text h2 b>
