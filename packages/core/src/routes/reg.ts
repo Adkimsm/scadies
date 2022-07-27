@@ -3,6 +3,7 @@ import config from '../utils/config'
 import { Request, Response } from 'express'
 import log from '../utils/log'
 import { encrypt } from '../utils/crypto'
+import { v4 } from 'uuid'
 
 export default async function (req: Request, res: Response) {
     log.info('reg is working', '/session/reg')
@@ -33,6 +34,17 @@ export default async function (req: Request, res: Response) {
     }
 
     console.log(Object.keys(data).length)
+
+
+    await users.write(Object.keys(data).length + 1, {
+        name: reqUsrName,
+        pwd: reqUsrPwd,
+        info: {
+            id: v4(),
+            role: "admin"
+        },
+    })
+
 
     return res.json({ y: true, msg: 'user creates successful' })
 }
