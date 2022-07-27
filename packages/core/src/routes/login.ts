@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 import log from '../utils/log'
 import { encrypt } from '../utils/crypto'
 
-const SECRET_KEY = config.get('cryptoSecret')
+const SECRET_KEY = config.get('secret')
 
 export default async function (req: Request, res: Response) {
     log.info('login is working', '/session/login')

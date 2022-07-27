@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import log from '../utils/log'
 import config from '../utils/config'
 
-const SECRET_KEY = config.get('cryptoSecret')
+const SECRET_KEY = config.get('secret')
 
 export default function (req: Request, res: Response) {
     log.info('verifyToken is working', '/session/verifytoken')
