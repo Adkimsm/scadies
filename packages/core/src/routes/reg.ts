@@ -18,7 +18,7 @@ export default async function (req: Request, res: Response) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         reqUsrPwd = encrypt(String(req.body.pwd))
 
-        console.log(req.body)
+    console.log(req.body)
 
     console.log(data)
 
