@@ -26,6 +26,9 @@ export default async function (req: Request, res: Response) {
 
     console.log(data)
 
+    let nameBool = false
+    const pwdBool = false
+
     for (const userNum in data) {
         const user = data[userNum]
         console.log(user)
@@ -43,12 +46,27 @@ export default async function (req: Request, res: Response) {
                             expiresIn: '7d',
                         }
                     )
-                    res.json({
+                    return res.json({
                         y: true,
                         token: token,
                     })
-                } else return res.json({ y: false, pwd: false })
-            } else return res.json({ y: false, name: false })
+                }
+            } else nameBool = true
         } else continue
     }
+
+    if (!nameBool) {
+        return res.json({
+            y: false,
+            name: false
+        })
+    }
+
+    if (!pwdBool) {
+        return res.json({
+            y: false,
+            pwd: false
+        })
+    }
+    
 }
