@@ -33,6 +33,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc",
     "preserve": "npm run build",
-    "serve": "npm run start:js"
+    "serve": "npm run start:js",
+    "dev": "npm run start"
   }
 }
