@@ -3,7 +3,6 @@ import config from '../utils/config'
 import { Request, Response } from 'express'
 import log from '../utils/log'
 import { encrypt } from '../utils/crypto'
-import { v4 } from 'uuid'
 
 export default async function (req: Request, res: Response) {
     log.info('reg is working', '/session/reg')
@@ -16,9 +15,10 @@ export default async function (req: Request, res: Response) {
         users = await dbObj('users'),
         data = await users.list(),
         reqUsrName = req.body.usr,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         reqUsrPwd = encrypt(String(req.body.pwd))
 
-    console.log(req.body)
+        console.log(req.body)
 
     console.log(data)
 
@@ -33,6 +33,6 @@ export default async function (req: Request, res: Response) {
     }
 
     console.log(Object.keys(data).length)
-    
-    return res.json({y: true, msg: "user creates successful" })
+
+    return res.json({ y: true, msg: 'user creates successful' })
 }

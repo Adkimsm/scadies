@@ -4,7 +4,6 @@ import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import log from '../utils/log'
 import { encrypt } from '../utils/crypto'
-import {v4} from 'uuid'
 
 const SECRET_KEY = config.get('cryptoSecret')
 
@@ -33,18 +32,17 @@ export default async function (req: Request, res: Response) {
         if (user) {
             if (user.name == reqUsrName) {
                 if (user.pwd == reqUsrPwd) {
-                    const token =
-                        jwt.sign(
-                            {
-                                _id: user.info.id,
-                                role: user.info.role,
-                            },
-                            SECRET_KEY,
-                            {
-                                algorithm: 'RS512',
-                                expiresIn: '7d',
-                            }
-                        )
+                    const token = jwt.sign(
+                        {
+                            _id: user.info.id,
+                            role: user.info.role,
+                        },
+                        SECRET_KEY,
+                        {
+                            algorithm: 'RS512',
+                            expiresIn: '7d',
+                        }
+                    )
                     res.json({
                         y: true,
                         token: token,
