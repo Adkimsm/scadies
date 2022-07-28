@@ -10,7 +10,7 @@ import post from './routes/post'
 import reg from './routes/reg'
 import verifyToken from './routes/verifyToken'
 import log from './utils/log'
-import version from './routes/version'
+//import version from './routes/version'
 
 const port = config.get('port')
 
@@ -20,7 +20,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
-app.get('/', home)
+app.get('/api', home)
 
 app.get('/api/siteinfos', siteInfos)
 
@@ -34,8 +34,14 @@ app.get('/api/session/verifytoken/:token', verifyToken)
 
 app.post('/api/session/reg', reg)
 
-app.get('/api/ver', version)
+//app.get('/api/ver', version)
 
-app.listen(port, () => {
-    log.info(`Application started on port ${port}!`)
-})
+if (config.get('buildForVercel') === false) {
+    app.listen(port, () => {
+        log.info(`Application started on port ${port}!`)
+    })
+}
+
+if (config.get('buildForVercel') === true) {
+    module.exports = app
+}
