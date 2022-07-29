@@ -31,8 +31,14 @@ function Posts() {
             .then(res => setPosts(res))
     }, [])
 
+    const token = localStorage.getItem('token')
+
     const deletePost = (id: string) =>
-        fetch(`${import.meta.env.VITE_CORE_URI}/api/posts/delete/${id}`)
+        fetch(`${import.meta.env.VITE_CORE_URI}/api/posts/delete/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
 
     return (
         <>

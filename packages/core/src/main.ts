@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import express from 'express'
+import { expressjwt as expressJWT } from 'express-jwt'
 import terminalLink from 'terminal-link'
 import cors from 'cors'
 import home from './routes/home'
@@ -10,6 +11,7 @@ import posts from './routes/posts'
 import post from './routes/post'
 import reg from './routes/reg'
 import verifyToken from './routes/verifyToken'
+import deletePost from './routes/deletePost'
 import log from './utils/log'
 //import version from './routes/version'
 
@@ -36,6 +38,12 @@ app.get('/api/session/verifytoken/:token', verifyToken)
 app.post('/api/session/reg', reg)
 
 //app.get('/api/ver', version)
+
+app.get(
+    '/api/posts/delete/:id',
+    expressJWT({ secret: config.get('secret'), algorithms: ['RS512'] }),
+    deletePost
+)
 
 if (config.get('buildForVercel') === false) {
     app.listen(port, () => {
