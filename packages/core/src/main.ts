@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import express from 'express'
+import terminalLink from 'terminal-link'
 import cors from 'cors'
 import home from './routes/home'
 import config from './utils/config'
@@ -38,7 +39,11 @@ app.post('/api/session/reg', reg)
 
 if (config.get('buildForVercel') === false) {
     app.listen(port, () => {
-        log.info(`Application started on port ${port}!`)
+        const link = terminalLink(
+            `http://localhost:${port.toString()}`,
+            `http://localhost:${port.toString()}`
+        )
+        log.info(`Application started at ${link}!`)
     })
 }
 
