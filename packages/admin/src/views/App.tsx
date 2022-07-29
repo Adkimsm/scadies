@@ -68,21 +68,18 @@ function App() {
                         maxWidth: '1000px',
                         minWidth: '300px',
                         width: '75vw',
+                        padding: '2rem',
                     }}
                 >
-                    <Card shadow>
-                        <Text h2 b>
-                            概览
-                        </Text>
-                        <Text p>共有 {postNum} 篇文章。</Text>
-                    </Card>
-                    <Card shadow>
-                        <Text h2 b>
-                            系统信息
-                        </Text>
-                        <Text p>Core 版本： {coreVersion}</Text>
-                        <Text p>Admin 版本： {adminVersion}</Text>
-                    </Card>
+                    <Text h2 b>
+                        概览
+                    </Text>
+                    <Text p>共有 {postNum} 篇文章。</Text>
+                    <Text h2 b>
+                        系统信息
+                    </Text>
+                    <Text p>Core 版本： {coreVersion}</Text>
+                    <Text p>Admin 版本： {adminVersion}</Text>
                 </Card>
             </div>
         </>
