@@ -10,12 +10,12 @@ A Powerful Dynamic Blog System, Powered By TypeScript & Express.
 Working in Progress
 </blockquote>
 
--  [Docs](https://scadies.js.org)
+-   [Docs](https://scadies.js.org)
 
 ## Features
 
-- Powered By TypeScript & Express.
-- Separation of Front-end And Backend.
+-   Powered By TypeScript & Express.
+-   Separation of Front-end And Backend.
 
 ## License
 
