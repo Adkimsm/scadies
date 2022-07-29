@@ -18,6 +18,10 @@ function App() {
     })
     const [state, setState] = useState(false)
     const open = () => setState(true)
+    const [hitokoto, setHitokoto] = useState({
+        hitokoto: '',
+        from: '',
+    })
 
     let postNum = 0
 
@@ -25,11 +29,19 @@ function App() {
         .then(res => res.json())
         .then(res => (postNum = Object.keys(res).length))
 
+    /*
     let coreVersion = '0.0.1'
 
     fetch(`${import.meta.env.VITE_CORE_URI}/api/ver`)
         .then(res => res.json())
         .then(res => (coreVersion = res.v))
+*/
+
+    useEffect(() => {
+        fetch('https://v1.hitokoto.cn/?encode=json')
+            .then(res => res.json())
+            .then(res => setHitokoto(res))
+    }, [])
 
     return (
         <>
@@ -62,8 +74,7 @@ function App() {
                     width: '100vw',
                 }}
             >
-                <Card
-                    shadow
+                <div
                     style={{
                         maxWidth: '1000px',
                         minWidth: '300px',
@@ -71,16 +82,34 @@ function App() {
                         padding: '2rem',
                     }}
                 >
-                    <Text h2 b>
-                        概览
-                    </Text>
-                    <Text p>共有 {postNum} 篇文章。</Text>
-                    <Text h2 b>
-                        系统信息
-                    </Text>
-                    <Text p>Core 版本： {coreVersion}</Text>
-                    <Text p>Admin 版本： {adminVersion}</Text>
-                </Card>
+                    <div
+                        style={{
+                            textAlign: 'center',
+                            margin: '3rem',
+                            fontFamily: 'serif',
+                        }}
+                    >
+                        <Text h3 b>
+                            『 {hitokoto.hitokoto} 』
+                        </Text>
+                        <Text p style={{ textAlign: 'right' }}>
+                            {' '}
+                            ---- {hitokoto.from}
+                        </Text>
+                    </div>
+
+                    <Card shadow margin={'2rem'} padding={'3rem'}>
+                        <Text h2 b>
+                            概览
+                        </Text>
+                        <Text p>共有 {postNum} 篇文章。</Text>
+                        <Text h2 b>
+                            系统信息
+                        </Text>
+                        {/*<Text p>Core 版本： {coreVersion}</Text>*/}
+                        <Text p>Admin 版本： {adminVersion}</Text>
+                    </Card>
+                </div>
             </div>
         </>
     )
