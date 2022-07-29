@@ -37,7 +37,7 @@ function App() {
         fetch('https://v1.hitokoto.cn/?encode=json')
             .then(res => res.json())
             .then(res => setHitokoto(res))
-            
+
         fetch(`${import.meta.env.VITE_CORE_URI}/api/posts`)
             .then(res => res.json())
             .then(res => (postNum = Object.keys(res).length))
