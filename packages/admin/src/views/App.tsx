@@ -25,10 +25,6 @@ function App() {
 
     let postNum = 0
 
-    fetch(`${import.meta.env.VITE_CORE_URI}/api/posts`)
-        .then(res => res.json())
-        .then(res => (postNum = Object.keys(res).length))
-
     /*
     let coreVersion = '0.0.1'
 
@@ -41,6 +37,10 @@ function App() {
         fetch('https://v1.hitokoto.cn/?encode=json')
             .then(res => res.json())
             .then(res => setHitokoto(res))
+            
+        fetch(`${import.meta.env.VITE_CORE_URI}/api/posts`)
+            .then(res => res.json())
+            .then(res => (postNum = Object.keys(res).length))
     }, [])
 
     return (
