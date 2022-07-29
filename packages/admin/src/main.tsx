@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client'
 import App from './views/App'
 import Login from './views/Login'
 import Reg from './views/Reg'
+import Posts from './views/Posts'
 import Auth from './components/Auth'
 import './index.css'
 
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
                         <Route path="/" element={<App />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/reg" element={<Reg />} />
+                        <Route path="/posts" element={<Posts />} />
                     </Routes>
                 </BrowserRouter>
             </Auth>
