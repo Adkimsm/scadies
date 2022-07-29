@@ -35,16 +35,14 @@ export default async function (req: Request, res: Response) {
 
     console.log(Object.keys(data).length)
 
-
     await users.write(Object.keys(data).length + 1, {
         name: reqUsrName,
         pwd: reqUsrPwd,
         info: {
             id: v4(),
-            role: "admin"
+            role: 'admin',
         },
     })
-
 
     return res.json({ y: true, msg: 'user creates successful' })
 }

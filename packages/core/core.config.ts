@@ -8,8 +8,6 @@ export default {
     dbName: 'Scadies',
     algorithm: 'aes192',
     cryptoEncoding: 'hex',
-    secret: fs.readFileSync(
-        path.resolve(__dirname, './public/jwt/jwt.pem')
-    ),
-    buildForVercel: false
+    secret: fs.readFileSync(path.resolve(__dirname, './public/jwt/jwt.pem')),
+    buildForVercel: false,
 }

@@ -58,15 +58,14 @@ export default async function (req: Request, res: Response) {
     if (!nameBool) {
         return res.json({
             y: false,
-            name: false
+            name: false,
         })
     }
 
     if (!pwdBool) {
         return res.json({
             y: false,
-            pwd: false
+            pwd: false,
         })
     }
-    
 }
