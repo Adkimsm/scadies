@@ -31,7 +31,7 @@ function App() {
 
     return (
         <Layout>
-            <Text h3 b>
+            <Text h3 b style={{textAlign: "center"}}>
                 『 {hitokoto.hitokoto} 』
             </Text>
             <Text p style={{ textAlign: 'right' }}>
