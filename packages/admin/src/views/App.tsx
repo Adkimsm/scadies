@@ -98,7 +98,7 @@ function App() {
                         </Text>
                     </div>
 
-                    <Card shadow margin={'2rem'} padding={'3rem'}>
+                    <Card shadow margin={'2rem'} padding={'3rem'} style={{borderRadius: "20px"}}>
                         <Text h2 b>
                             概览
                         </Text>
