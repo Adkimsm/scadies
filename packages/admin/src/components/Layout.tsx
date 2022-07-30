@@ -4,7 +4,10 @@ import React, { useEffect, useState } from 'react'
 import { Button, Drawer, Text } from '@geist-ui/core'
 import { AlignLeft } from '@geist-ui/icons'
 
-const App: React.FC<{children: React.ReactNode}> = (props) => {
+const App: React.FC<{
+    children: React.ReactNode
+    style?: React.CSSProperties
+}> = props => {
     const { authed } = useAuth()
     console.log(authed)
     const goTo = useNavigate()
@@ -59,9 +62,9 @@ const App: React.FC<{children: React.ReactNode}> = (props) => {
                 >
                     <div
                         style={{
-                            textAlign: 'center',
                             margin: '3rem',
                             fontFamily: 'serif',
+                            ...props.style
                         }}
                     >
                         {props.children}
