@@ -60,7 +60,7 @@ const App: React.FC<{
                     </p>
                     {config.sidebar.map((item, i) => {
                         return (
-                            <Link to={item.href}>
+                            <Link to={item.href} key={i}>
                                 <Button
                                     key={i}
                                     style={{
