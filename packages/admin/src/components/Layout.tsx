@@ -1,8 +1,23 @@
 import { useAuth } from '../components/Auth'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import { Button, Drawer, Text } from '@geist-ui/core'
 import { AlignLeft } from '@geist-ui/icons'
+
+const config = {
+    sidebar: [
+        {
+            name: 'Home',
+            ref: 'inside',
+            href: '/',
+        },
+        {
+            name: 'Posts',
+            ref: 'inside',
+            href: '/posts',
+        },
+    ],
+}
 
 const App: React.FC<{
     children: React.ReactNode
@@ -39,10 +54,27 @@ const App: React.FC<{
                         Dashboard
                     </Text>
                 </Drawer.Title>
-                <Drawer.Content>
+                <Drawer.Content style={{ textAlign: 'center' }}>
                     <p style={{ opacity: 0, userSelect: 'none' }}>
                         Geist UI 是我最爱的组件库。Geist UI 是我最
                     </p>
+                    {config.sidebar.map((item, i) => {
+                        return (
+                            <Link to={item.href}>
+                                <Button
+                                    key={i}
+                                    style={{
+                                        width: '100%',
+                                        marginBottom: '15px',
+                                        display: 'inline-block',
+                                        color: '#000',
+                                    }}
+                                >
+                                    {item.name}
+                                </Button>
+                            </Link>
+                        )
+                    })}
                 </Drawer.Content>
             </Drawer>
             <div
@@ -64,7 +96,7 @@ const App: React.FC<{
                         style={{
                             margin: '3rem',
                             fontFamily: 'serif',
-                            ...props.style
+                            ...props.style,
                         }}
                     >
                         {props.children}

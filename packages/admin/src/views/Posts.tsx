@@ -29,7 +29,7 @@ function Posts() {
         })
 
     return (
-        <Layout style={{ textAlign: "center"}}>
+        <Layout style={{ textAlign: 'center' }}>
             <Text h1>文章管理</Text>
             <Spacer h={'3rem'} />
 
