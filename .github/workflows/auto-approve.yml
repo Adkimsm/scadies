@@ -1,13 +1,13 @@
-name: Auto approve
-
+name: auto approve
 on:
-  pull_request
+  pull_request_target:
+    types: [labeled]
 
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
     steps:
-    - uses: hmarr/auto-approve-action@v2.2.1
-      if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' || github.actor == 'imgbot[bot]' || github.actor == 'renovate[bot]'
-      with:
-        github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - uses: hmarr/auto-approve-action@v2.0.0
+        if: github.actor == 'dependabot[bot]' || contains(github.event.pull_request.labels.*.name, 'dependencies')
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
