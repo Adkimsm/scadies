@@ -4,7 +4,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 const Home: NextPage = () => {
-    const [siteInfos, setSiteInfos] = useState<any>({title: 'Hell World', desc: 'Just so so.'})
+    const [siteInfos, setSiteInfos] = useState<any>({
+        title: 'Hell World',
+        desc: 'Just so so.',
+    })
     const [posts, setPosts] = useState<any>({})
 
     useEffect(() => {
