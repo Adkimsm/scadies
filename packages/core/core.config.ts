@@ -9,6 +9,8 @@ export default {
     algorithm: 'aes192',
     cryptoEncoding: 'hex',
     secret: fs.readFileSync(path.resolve(__dirname, './public/jwt/jwt.pem')),
-    publicKey: fs.readFileSync(path.resolve(__dirname, './public/jwt/jwt_pub.pem')),
+    publicKey: fs.readFileSync(
+        path.resolve(__dirname, './public/jwt/jwt_pub.pem')
+    ),
     buildForVercel: false,
 }
