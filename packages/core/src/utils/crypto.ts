@@ -2,7 +2,7 @@ import crypto from 'crypto'
 import config from './config'
 
 const algorithm = config.get('algorithm')
-const SECRET = config.get('cryptoSecret')
+const SECRET = config.get('secret')
 const encoding = config.get('cryptoEncoding')
 
 export const encrypt = (content: string) => {

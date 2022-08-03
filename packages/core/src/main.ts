@@ -41,7 +41,7 @@ app.post('/api/session/reg', reg)
 
 app.get(
     '/api/posts/delete/:id',
-    expressJWT({ secret: config.get('secret'), algorithms: ['RS512'] }),
+    expressJWT({ secret: config.get('publicKey'), algorithms: ['RS512'] }),
     deletePost
 )
 

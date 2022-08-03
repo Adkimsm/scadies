@@ -43,7 +43,7 @@ export default async function (req: Request, res: Response) {
                         SECRET_KEY,
                         {
                             algorithm: 'RS512',
-                            expiresIn: '7d',
+                            expiresIn: '6h',
                         }
                     )
                     return res.json({
