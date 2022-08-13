@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GeistProvider, CssBaseline } from '@geist-ui/core'
 import ReactDOM from 'react-dom/client'
@@ -6,23 +5,25 @@ import App from './views/App'
 import Login from './views/Login'
 import Reg from './views/Reg'
 import Posts from './views/Posts'
+import NewPost from './views/NewPost'
 import Auth from './components/Auth'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <StrictMode>
-        <GeistProvider>
-            <CssBaseline />
-            <Auth>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<App />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/reg" element={<Reg />} />
-                        <Route path="/posts" element={<Posts />} />
-                    </Routes>
-                </BrowserRouter>
-            </Auth>
-        </GeistProvider>
-    </StrictMode>
+    <GeistProvider>
+        <CssBaseline />
+        <Auth>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<App />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/reg" element={<Reg />} />
+                    <Route path="/posts" element={<Posts />} />
+                    <Route path="/new">
+                        <Route path="post" element={<NewPost />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </Auth>
+    </GeistProvider>
 )

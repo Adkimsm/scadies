@@ -16,6 +16,11 @@ const config = {
             ref: 'inside',
             href: '/posts',
         },
+        {
+            name: 'New Post',
+            ref: 'inside',
+            href: '/new/post',
+        },
     ],
 }
 
