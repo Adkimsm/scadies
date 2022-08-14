@@ -4,14 +4,17 @@ import { useEffect, useState } from 'react'
 import { Button, Text, Spacer } from '@geist-ui/core'
 import { Edit, X } from '@geist-ui/icons'
 
-function Posts() {
+export default function Posts() {
     const [, reRender] = useState<any>()
 
-    type Post = {
-        [key: string]: string
+    type Posts = {
+        [key: string]: {
+            title: string
+            content: string
+        }
     }
 
-    const [posts, setPosts] = useState<Array<Post>>([])
+    const [posts, setPosts] = useState<Posts>()
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_CORE_URI}/api/posts`)
@@ -33,32 +36,38 @@ function Posts() {
             <Text h1>文章管理</Text>
             <Spacer h={'3rem'} />
 
-            {posts.length >= 1 ? (
-                <table>
-                    <tr>
-                        <td>标题</td>
-                        <td>操作</td>
-                    </tr>
-                    {posts.map((post, i) => {
-                        return (
-                            <tr key={i}>
-                                <td>{post.title}</td>
-                                <td>
-                                    <Link to={`/posts/edit/${post.id}`}>
-                                        <Button icon={<Edit />}></Button>
-                                    </Link>
-                                    <Button
-                                        onClick={() =>
-                                            deletePost(post.id)
-                                                .then(res => res.json())
-                                                .then(() => reRender(''))
-                                        }
-                                        icon={<X />}
-                                    ></Button>
-                                </td>
-                            </tr>
-                        )
-                    })}
+            {posts ? (
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <td style={{width: "20%", border: "solid 2px"}}>标题</td>
+                            <td style={{width: "80%", border: "solid 2px"}}>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Object.keys(posts).map((postKey, i) => {
+                            const post = posts[postKey]
+                            return (
+                                <tr key={i}>
+                                    <td style={{width: "20%", border: "solid 2px"}}>{post.title}</td>
+                                    <td style={{width: "80%", border: "solid 2px", textAlign: "left"}}>
+                                        <Link to={`/posts/edit/${postKey}`}>
+                                            <Button width={"40px"} margin="10px" icon={<Edit />}></Button>
+                                        </Link>
+                                        <Button
+                                            width={"40px"}
+                                            onClick={() =>
+                                                deletePost(postKey)
+                                                    .then(res => res.json())
+                                                    .then(() => reRender(''))
+                                            }
+                                            icon={<X />}
+                                        ></Button>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
                 </table>
             ) : (
                 <Text h3>
@@ -69,5 +78,3 @@ function Posts() {
         </Layout>
     )
 }
-
-export default Posts
