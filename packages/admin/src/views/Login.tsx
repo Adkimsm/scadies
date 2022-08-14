@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react'
 const Home = () => {
     const location = useLocation()
     const search = new URLSearchParams(location.search)
-    const from = search.get('from') || ""
+    const from = search.get('from') || ''
     const goTo = useNavigate()
 
     const { authed, setAuthed } = useAuth(),

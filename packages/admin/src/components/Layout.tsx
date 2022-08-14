@@ -37,7 +37,9 @@ const App: React.FC<{
     useEffect(() => {
         if (authed == false) {
             console.log('goto')
-            goTo(`/login?from=${encodeURIComponent(location.pathname)}`, { replace: true })
+            goTo(`/login?from=${encodeURIComponent(location.pathname)}`, {
+                replace: true,
+            })
         }
     })
     const [state, setState] = useState(false)
