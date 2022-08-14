@@ -7,6 +7,7 @@ import {
     Button,
     useToasts,
 } from '@geist-ui/core'
+import { v4 } from 'uuid'
 
 type PostInfo = {
     title: string
@@ -15,7 +16,7 @@ type PostInfo = {
 }
 
 const save = (info: PostInfo) =>
-    fetch(`${import.meta.env.VITE_CORE_URI}/api/posts/new`, {
+    fetch(`${import.meta.env.VITE_CORE_URI}/api/posts/new/${v4()}`, {
         method: 'POST',
         body: JSON.stringify(info),
         headers: {
@@ -49,7 +50,7 @@ function NewPost() {
                         setToast(
                             res.y
                                 ? { text: '保存成功', type: 'secondary' }
-                                : { text: '密码错误', type: 'error' }
+                                : { text: 'Token 错误', type: 'error' }
                         )
                     })
                 }}
