@@ -23,7 +23,10 @@ const save = (info: PostInfo) =>
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-    }).then(res => res.json())
+    }).then(res => {
+        if (res.ok) return res.json()
+        else throw new Error('permission denied')
+    })
 
 function NewPost() {
     const { setToast } = useToasts()
@@ -46,13 +49,20 @@ function NewPost() {
             <Textarea height="50vw" width="100%" {...bindings} />
             <Button
                 onClick={() => {
-                    save({ title, content }).then(res => {
-                        setToast(
-                            res.y
-                                ? { text: '保存成功', type: 'secondary' }
-                                : { text: 'Token 错误', type: 'error' }
-                        )
-                    })
+                    save({ title, content })
+                        .then(res => {
+                            setToast(
+                                res.y
+                                    ? { text: '保存成功', type: 'secondary' }
+                                    : {
+                                          text: '服务器发生错误，请查阅 Core 日志',
+                                          type: 'error',
+                                      }
+                            )
+                        })
+                        .catch(() => {
+                            setToast({ text: 'Token 错误，请刷新重试', type: 'error' })
+                        })
                 }}
             >
                 Save
