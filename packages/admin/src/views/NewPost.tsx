@@ -61,7 +61,10 @@ function NewPost() {
                             )
                         })
                         .catch(() => {
-                            setToast({ text: 'Token 错误，请刷新重试', type: 'error' })
+                            setToast({
+                                text: 'Token 错误，请刷新重试',
+                                type: 'error',
+                            })
                         })
                 }}
             >
