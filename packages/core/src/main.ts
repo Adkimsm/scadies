@@ -12,6 +12,7 @@ import post from './routes/post'
 import reg from './routes/reg'
 import verifyToken from './routes/verifyToken'
 import deletePost from './routes/deletePost'
+import newPost from './routes/newPost'
 import log from './utils/log'
 import { performance } from 'perf_hooks'
 import { endHTTP, startHTTP } from './middlewares/http'
@@ -47,6 +48,12 @@ app.get(
     '/api/posts/delete/:id',
     expressJWT({ secret: config.get('publicKey'), algorithms: ['RS512'] }),
     deletePost
+)
+
+app.post(
+    '/api/posts/new/:id',
+    expressJWT({ secret: config.get('publicKey'), algorithms: ['RS512'] }),
+    newPost
 )
 
 app.all('/*', (_req: Request, response: Response, next: NextFunction) => {

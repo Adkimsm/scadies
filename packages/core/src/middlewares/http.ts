@@ -9,4 +9,3 @@ export const startHTTP = (req: Request, res: Response, next: NextFunction) => {
 export const endHTTP = (req: Request, res: Response) => {
     log.info(`http Response: ${req.url} => ${res.statusCode}`)
 }
-
