@@ -1,6 +1,5 @@
 import { Response } from 'express'
 import { Request } from 'express-jwt'
-import log from '../utils/log'
 import db from '../utils/db'
 import config from '../utils/config'
 
@@ -16,5 +15,5 @@ export default async function (req: Request, res: Response) {
         data = await posts.write(id, req.body)
 
     await posts.close()
-    return res.json(data)
+    return res.json({ y: true, data })
 }

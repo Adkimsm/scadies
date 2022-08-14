@@ -40,8 +40,12 @@ export default function Posts() {
                 <table width="100%">
                     <thead>
                         <tr>
-                            <td style={{width: "20%", border: "solid 2px"}}>标题</td>
-                            <td style={{width: "80%", border: "solid 2px"}}>操作</td>
+                            <td style={{ width: '20%', border: 'solid 2px' }}>
+                                标题
+                            </td>
+                            <td style={{ width: '80%', border: 'solid 2px' }}>
+                                操作
+                            </td>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,13 +53,30 @@ export default function Posts() {
                             const post = posts[postKey]
                             return (
                                 <tr key={i}>
-                                    <td style={{width: "20%", border: "solid 2px"}}>{post.title}</td>
-                                    <td style={{width: "80%", border: "solid 2px", textAlign: "left"}}>
+                                    <td
+                                        style={{
+                                            width: '20%',
+                                            border: 'solid 2px',
+                                        }}
+                                    >
+                                        {post.title}
+                                    </td>
+                                    <td
+                                        style={{
+                                            width: '80%',
+                                            border: 'solid 2px',
+                                            textAlign: 'left',
+                                        }}
+                                    >
                                         <Link to={`/posts/edit/${postKey}`}>
-                                            <Button width={"40px"} margin="10px" icon={<Edit />}></Button>
+                                            <Button
+                                                width={'40px'}
+                                                margin="10px"
+                                                icon={<Edit />}
+                                            ></Button>
                                         </Link>
                                         <Button
-                                            width={"40px"}
+                                            width={'40px'}
                                             onClick={() =>
                                                 deletePost(postKey)
                                                     .then(res => res.json())
