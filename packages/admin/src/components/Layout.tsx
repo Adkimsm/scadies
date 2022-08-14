@@ -1,5 +1,5 @@
 import { useAuth } from '../components/Auth'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import { Button, Drawer, Text } from '@geist-ui/core'
 import { AlignLeft } from '@geist-ui/icons'
@@ -32,10 +32,12 @@ const App: React.FC<{
     console.log(authed)
     const goTo = useNavigate()
 
+    const location = useLocation()
+
     useEffect(() => {
         if (authed == false) {
             console.log('goto')
-            goTo('/login', { replace: true })
+            goTo(`/login?from=${encodeURIComponent(location.pathname)}`, { replace: true })
         }
     })
     const [state, setState] = useState(false)

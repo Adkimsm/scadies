@@ -7,11 +7,14 @@ import {
     Button,
     useToasts,
 } from '@geist-ui/core'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../components/Auth'
 import { useEffect, useState } from 'react'
 
 const Home = () => {
+    const location = useLocation()
+    const search = new URLSearchParams(location.search)
+    const from = search.get('from') || ""
     const goTo = useNavigate()
 
     const { authed, setAuthed } = useAuth(),
@@ -23,7 +26,7 @@ const Home = () => {
 
     useEffect(() => {
         if (authed) {
-            goTo('/')
+            goTo(`${decodeURIComponent(from)}`)
             setToast({ text: '您已登录', type: 'secondary' })
         }
     }, [authed])
