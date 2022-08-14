@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import { expressjwt as expressJWT } from 'express-jwt'
 import terminalLink from 'terminal-link'
 import cors from 'cors'
@@ -13,11 +13,15 @@ import reg from './routes/reg'
 import verifyToken from './routes/verifyToken'
 import deletePost from './routes/deletePost'
 import log from './utils/log'
+import { performance } from 'perf_hooks'
+import { endHTTP, startHTTP } from './middlewares/http'
 //import version from './routes/version'
 
 const port = config.get('port')
 
 const app = express()
+
+app.use(startHTTP)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -45,13 +49,22 @@ app.get(
     deletePost
 )
 
+app.all('/*', (_req: Request, response: Response, next: NextFunction) => {
+    response.sendStatus(404)
+    next()
+})
+
+app.use(endHTTP)
+
 if (config.get('buildForVercel') === false) {
     app.listen(port, () => {
         const link = terminalLink(
-            `http://localhost:${port.toString()}`,
+            port.toString(),
             `http://localhost:${port.toString()}`
         )
-        log.info(`Application started at ${link}!`)
+        log.info(
+            `Scadies Core Listenned at ${link} => ${performance.now() | 0} ms`
+        )
     })
 }
 
