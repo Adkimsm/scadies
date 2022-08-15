@@ -6,4 +6,4 @@
 
 官方的后台仓库同样托管在 [GitHub](https://github.com/Kysolva/scadies/tree/main/packages/admin) (Alpha)
 
-目前没有前端仓库。
+前端有一个仅作示例的仓库，在 [GitHub](https://github.com/Kysolva/scadies/tree/main/packages/theme-default)
