@@ -10,8 +10,8 @@
         "strictNullChecks": true,
         "strictFunctionTypes": true,
         "allowSyntheticDefaultImports": true,
-        "declaration": true,
         "isolatedModules": true
     },
-    "exclude": ["node_modules", "**/node_modules/*"]
+    "exclude": ["node_modules", "**/node_modules/*"],
+    "include": ["libs", "src"]
 }
