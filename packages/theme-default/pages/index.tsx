@@ -1,8 +1,10 @@
 import type { NextPage } from 'next'
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+
 const Home: NextPage = () => {
     const [siteInfos, setSiteInfos] = useState<any>({
         title: 'Hell World',
@@ -48,13 +50,11 @@ const Home: NextPage = () => {
                         Object.keys(posts).map((postKey: any, i: number) => {
                             const post = posts[postKey]
                             return (
-                                <a
-                                    href="https://nextjs.org/docs"
-                                    className={styles.card}
-                                    key={i}
-                                >
-                                    <h2>{post.title} &rarr;</h2>
-                                </a>
+                                <Link href={`/post/${postKey}`} key={i}>
+                                    <a className={styles.card}>
+                                        <h2>{post.title} &rarr;</h2>
+                                    </a>
+                                </Link>
                             )
                         })
                     ) : (
