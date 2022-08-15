@@ -6,6 +6,7 @@ import Login from './views/Login'
 import Reg from './views/Reg'
 import Posts from './views/Posts'
 import NewPost from './views/NewPost'
+import EditPost from './views/EditPost'
 import Auth from './components/Auth'
 import './index.css'
 
@@ -21,6 +22,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
                     <Route path="/posts" element={<Posts />} />
                     <Route path="/new">
                         <Route path="post" element={<NewPost />} />
+                    </Route>
+                    <Route path="/edit">
+                        <Route path="post/:postid" element={<EditPost />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

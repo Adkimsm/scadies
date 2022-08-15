@@ -68,7 +68,7 @@ export default function Posts() {
                                             textAlign: 'left',
                                         }}
                                     >
-                                        <Link to={`/posts/edit/${postKey}`}>
+                                        <Link to={`/edit/post/${postKey}`}>
                                             <Button
                                                 width={'40px'}
                                                 margin="10px"
