@@ -10,5 +10,5 @@
     }
   ],
   "platformAutomerge": true,
-  "ignoreDeps": ["@types/node"]
+  "ignoreDeps": ["@types/node", "terminal-link", "chalk"]
 }
