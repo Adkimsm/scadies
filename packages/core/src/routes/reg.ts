@@ -1,14 +1,10 @@
 import db from '../utils/db'
 import config from '../utils/config'
-import { NextFunction, Request, Response } from 'express'
+import { Request, Response } from 'express'
 import { encrypt } from '../utils/crypto'
 import { v4 } from 'uuid'
 
-export default async function (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
+export default async function (req: Request, res: Response) {
     const dbObj = await (
             await db
         ).default({

@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express'
+import express from 'express'
 import terminalLink from 'terminal-link'
 import cors from 'cors'
 import config from './utils/config'

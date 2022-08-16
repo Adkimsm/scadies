@@ -47,7 +47,7 @@ function NewPost() {
         setState: setTitle,
         bindings: bindingsForTitle,
     } = useInput('World')
-    const [postInfo, setPostInfo] = useState<PostInfo>()
+    const [, setPostInfo] = useState<PostInfo>()
 
     useEffect(() => {
         ;(async function () {

@@ -1,13 +1,9 @@
-import { NextFunction, Response } from 'express'
+import { Response } from 'express'
 import { Request } from 'express-jwt'
 import db from '../utils/db'
 import config from '../utils/config'
 
-export default async function (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
+export default async function (req: Request, res: Response) {
     const auth: any = req.auth
     if (auth.role !== 'admin')
         return res.status(401).json({ y: false, msg: 'permission denied' })

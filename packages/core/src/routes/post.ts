@@ -1,12 +1,8 @@
 import db from '../utils/db'
 import config from '../utils/config'
-import { NextFunction, Request, Response } from 'express'
+import { Request, Response } from 'express'
 
-export default async function (
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
+export default async function (req: Request, res: Response) {
     const postId = req.params.id
     const dbObj = await (await db).default({ endpoint: config.get('dbUri') }),
         siteData = await dbObj('posts'),
