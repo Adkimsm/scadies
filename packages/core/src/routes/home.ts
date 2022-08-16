@@ -1,7 +1,5 @@
-import { Request, Response } from 'express'
-import log from '../utils/log'
+import { NextFunction, Request, Response } from 'express'
 
-export default function (_req: Request, res: Response) {
-    log.info('home is working', '/')
-    res.send('Application works!')
+export default function (_req: Request, res: Response, next: NextFunction) {
+    res.status(200).send('Application works!')
 }

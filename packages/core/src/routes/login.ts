@@ -1,14 +1,16 @@
 import db from '../utils/db'
 import config from '../utils/config'
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
-import log from '../utils/log'
 import { encrypt } from '../utils/crypto'
 
 const SECRET_KEY = config.get('secret')
 
-export default async function (req: Request, res: Response) {
-    log.info('login is working', '/session/login')
+export default async function (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
     const dbObj = await (
             await db
         ).default({
@@ -22,16 +24,11 @@ export default async function (req: Request, res: Response) {
 
     await users.close()
 
-    console.log(req.body)
-
-    console.log(data)
-
     let nameBool = false
     const pwdBool = false
 
     for (const userNum in data) {
         const user = data[userNum]
-        console.log(user)
         if (user) {
             if (user.name == reqUsrName) {
                 if (user.pwd == reqUsrPwd) {
@@ -46,7 +43,7 @@ export default async function (req: Request, res: Response) {
                             expiresIn: '6h',
                         }
                     )
-                    return res.json({
+                    res.status(200).json({
                         y: true,
                         token: token,
                     })
@@ -56,14 +53,14 @@ export default async function (req: Request, res: Response) {
     }
 
     if (!nameBool) {
-        return res.json({
+        res.status(200).json({
             y: false,
             name: false,
         })
     }
 
     if (!pwdBool) {
-        return res.json({
+        res.status(200).json({
             y: false,
             pwd: false,
         })

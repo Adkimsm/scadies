@@ -1,18 +1,14 @@
-import { Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
-import log from '../utils/log'
 import config from '../utils/config'
 
 const PUBLIC_KEY = config.get('publicKey')
 
-export default function (req: Request, res: Response) {
-    log.info('verifyToken is working', '/session/verifytoken')
+export default function (req: Request, res: Response, next: NextFunction) {
     const { token } = req.params
-    return jwt.verify(
-        token,
-        PUBLIC_KEY,
-        { algorithms: ['RS512'] },
-        (err, decoded) =>
-            res.json(err ? { ...err, y: false } : { y: true, msg: decoded })
-    )
+    jwt.verify(token, PUBLIC_KEY, { algorithms: ['RS512'] }, (err, decoded) => {
+        res.status(200).json(
+            err ? { ...err, y: false } : { y: true, msg: decoded }
+        )
+    })
 }

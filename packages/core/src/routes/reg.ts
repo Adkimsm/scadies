@@ -1,12 +1,14 @@
 import db from '../utils/db'
 import config from '../utils/config'
-import { Request, Response } from 'express'
-import log from '../utils/log'
+import { NextFunction, Request, Response } from 'express'
 import { encrypt } from '../utils/crypto'
 import { v4 } from 'uuid'
 
-export default async function (req: Request, res: Response) {
-    log.info('reg is working', '/session/reg')
+export default async function (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
     const dbObj = await (
             await db
         ).default({
@@ -16,24 +18,16 @@ export default async function (req: Request, res: Response) {
         users = await dbObj('users'),
         data = await users.list(),
         reqUsrName = req.body.usr,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         reqUsrPwd = encrypt(String(req.body.pwd))
-
-    console.log(req.body)
-
-    console.log(data)
 
     for (const userNum in data) {
         const user = data[userNum]
-        console.log(user)
         if (user) {
             if (user.name == reqUsrName) {
-                return res.json({ y: false, msg: 'user already exists' })
+                res.status(200).json({ y: false, msg: 'user already exists' })
             }
         } else continue
     }
-
-    console.log(Object.keys(data).length)
 
     await users.write(Object.keys(data).length + 1, {
         name: reqUsrName,
@@ -44,5 +38,5 @@ export default async function (req: Request, res: Response) {
         },
     })
 
-    return res.json({ y: true, msg: 'user creates successful' })
+    res.status(200).json({ y: true, msg: 'user creates successful' })
 }

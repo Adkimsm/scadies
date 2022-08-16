@@ -1,9 +1,13 @@
-import { Response } from 'express'
+import { NextFunction, Response } from 'express'
 import { Request } from 'express-jwt'
 import db from '../utils/db'
 import config from '../utils/config'
 
-export default async function (req: Request, res: Response) {
+export default async function (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
     const auth: any = req.auth
     if (auth.role !== 'admin')
         return res.status(401).json({ y: false, msg: 'permission denied' })
@@ -15,5 +19,5 @@ export default async function (req: Request, res: Response) {
         data = await posts.write(id, req.body)
 
     await posts.close()
-    return res.json({ y: true, data })
+    res.status(200).json({ y: true, data })
 }

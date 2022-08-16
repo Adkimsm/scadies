@@ -1,10 +1,12 @@
 import db from '../utils/db'
 import config from '../utils/config'
-import { Request, Response } from 'express'
-import log from '../utils/log'
+import { NextFunction, Request, Response } from 'express'
 
-export default async function (_req: Request, res: Response) {
-    log.info('siteinfos is working', '/api/siteinfos')
+export default async function (
+    _req: Request,
+    res: Response,
+    next: NextFunction
+) {
     const dbObj = await (
             await db
         ).default({
@@ -15,5 +17,5 @@ export default async function (_req: Request, res: Response) {
         data = await siteData.list()
 
     await siteData.close()
-    return res.json(data)
+    res.status(200).json(data)
 }

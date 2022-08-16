@@ -1,15 +1,17 @@
 import db from '../utils/db'
 import config from '../utils/config'
-import { Request, Response } from 'express'
-import log from '../utils/log'
+import { NextFunction, Request, Response } from 'express'
 
-export default async function (req: Request, res: Response) {
+export default async function (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
     const postId = req.params.id
-    log.info('post is working', `/api/posts/${postId}`)
     const dbObj = await (await db).default({ endpoint: config.get('dbUri') }),
         siteData = await dbObj('posts'),
         data = await siteData.read(postId)
 
     await siteData.close()
-    return res.json(data)
+    res.status(200).json(data)
 }
