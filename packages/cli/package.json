@@ -1,13 +1,16 @@
 {
     "name": "create-scadies",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A CLI Helper to Create a Scadies Blog.",
     "main": "./src/scadies.js",
     "author": "Kysolva GmbH.",
     "license": "MIT",
     "private": false,
     "bin": {
-        "create-scadies": "./src/scadies.js"
+        "create-scadies": "./dist/index.js"
+    },
+    "scripts": {
+        "build": "ncc build ./src/scadies.js -o dist"
     },
     "dependencies": {
         "cac": "^6.7.12",
@@ -16,5 +19,8 @@
         "node-copydir": "1.0.0",
         "prompts": "^2.4.2",
         "rimraf": "^3.0.2"
+    },
+    "devDependencies": {
+        "@vercel/ncc": "^0.34.0"
     }
 }
