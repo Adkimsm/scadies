@@ -3,7 +3,7 @@
     "env": {},
     "builds": [
         {
-            "src": "./dist/src/main.js",
+            "src": "./dist/bundle.js",
             "use": "@vercel/node",
             "config": { "includeFiles": ["dist/**"] }
         }
@@ -11,7 +11,7 @@
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "dist/src/main.js"
+            "dest": "dist/bundle.js"
         }
     ]
 }
