@@ -53,5 +53,3 @@ cli.command(
 })
 
 cli.parse()
-
-module.exports = cli
