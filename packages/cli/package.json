@@ -13,7 +13,7 @@
         "cac": "^6.7.12",
         "chalk": "4",
         "git-down-repo": "^2.4.3",
-        "node-copydir": "1.0.0",
+        "node-copydir": "1.0.1",
         "prompts": "^2.4.2",
         "rimraf": "^3.0.2"
     }

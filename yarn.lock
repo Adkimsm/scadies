@@ -948,11 +948,6 @@
     "@typescript-eslint/types" "5.33.0"
     eslint-visitor-keys "^3.3.0"
 
-"@vercel/ncc@^0.34.0":
-  version "0.34.0"
-  resolved "https://registry.yarnpkg.com/@vercel/ncc/-/ncc-0.34.0.tgz#d0139528320e46670d949c82967044a8f66db054"
-  integrity sha512-G9h5ZLBJ/V57Ou9vz5hI8pda/YQX5HQszCs3AmIus3XzsmRn/0Ptic5otD3xVST8QLKk7AMk7AqpsyQGN7MZ9A==
-
 "@vitejs/plugin-react@2.0.0":
   version "2.0.0"
   resolved "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-2.0.0.tgz"
@@ -3718,10 +3713,10 @@ next@12.2.3:
     "@next/swc-win32-ia32-msvc" "12.2.3"
     "@next/swc-win32-x64-msvc" "12.2.3"
 
-node-copydir@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmmirror.com/node-copydir/-/node-copydir-1.0.0.tgz"
-  integrity sha512-rYyEKY+ahXOAt1nPA371UN/G8dut6eK7m3qi7KZ0C4UsUQkpts/g5TmAAtzUh6e5F+H12iDDcypLxKeFCW0qXg==
+node-copydir@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/node-copydir/-/node-copydir-1.0.1.tgz#b54878e789e39a807cdbbeb143e7d592c1bd3b92"
+  integrity sha512-Z10pEl8A8BVw7iRB1TuzdWMGAIBq/Chyrk+FKGxVqe6ozdXUyDMKqayyVHlwfCUVPiSxAPjqJptcAfcUO+CDEQ==
   dependencies:
     fs-extra "^7.0.1"
 
