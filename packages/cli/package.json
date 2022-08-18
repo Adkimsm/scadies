@@ -1,11 +1,14 @@
 {
-    "name": "cli",
+    "name": "create-scadies",
     "version": "1.0.0",
     "description": "A CLI Helper to Create a Scadies Blog.",
     "main": "./src/main.js",
     "author": "Kysolva GmbH.",
     "license": "MIT",
     "private": false,
+    "bin": {
+        "create-scadies": "./bin/scadies.js"
+    },
     "dependencies": {
         "cac": "^6.7.12",
         "chalk": "4",
