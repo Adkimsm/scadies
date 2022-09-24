@@ -3,7 +3,8 @@
 </h1>
 
 > 由于本人跑去用 VitePress 了，所以这个项目又鸽了（） 
-> Since I ran away to use VitePress, this project was again pigeonholed （）
+> 
+> Because I ran away to use VitePress, this project was again pigeonholed （）
 
 <p align="center">
 A Powerful Dynamic Blog System, Powered By TypeScript & Express.
