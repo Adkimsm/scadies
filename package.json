@@ -1,10 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "dev": "turbo run dev --parallel"
   },
   "devDependencies": {
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "turbo": "^1.10.7"
   },
   "name": "scadies",
   "packageManager": "yarn@3.6.1",
